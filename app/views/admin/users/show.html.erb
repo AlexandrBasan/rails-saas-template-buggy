@@ -1,0 +1,28 @@
+<%
+content_for(:page_title, "User - #{@user}")
+content_for(:page_heading, 'User')
+%>
+
+<ul class="nav nav-pills">
+  <li class="active"><%= link_to "User", admin_user_path(@user) %></li>
+  <% if can?(:accounts, @user) %><li><%= link_to "Accounts", admin_user_accounts_path(@user) %></li><% end %>
+  <% if can?(:index, @user) %><li><%= link_to "Invitations", admin_user_user_invitations_path(@user) %></li><% end %>
+</ul>
+
+<div style="text-align: right; padding: 10px 0px;">
+  <% if can? :edit, @user %><%= link_to "Edit User", edit_admin_user_path(@user), class: "btn btn-primary" %><% end %>
+  <% if can? :destroy, @user %><%= link_to "Delete User", admin_user_path(@user), method: :delete, class: "btn btn-danger" %><% end %>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>First Name</dt>
+  <dd><%= @user.first_name %></dd>
+  <dt>Last Name</dt>
+  <dd><%= @user.last_name %></dd>
+  <dt>Email</dt>
+  <dd><%= @user.email %>  <a href="mailto:<%= @user.email %>"><%= fa_icon 'envelope' %></a></dd>
+  <dt>Active</dt>
+  <dd><%if @user.active %><span class="label label-success">Active</span><% else %> <span class="label label-danger">Inactive</span><% end %></dd>
+  <dt>Super Admin</dt>
+  <dd><%if @user.super_admin %><span class="label label-success">Yes</span><% end %></dd>
+</dl>
