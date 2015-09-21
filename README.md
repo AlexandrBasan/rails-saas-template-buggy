@@ -73,9 +73,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 MySQL Server:
 http://dev.mysql.com/downloads/mysql/
+
 MySQL Workbench Utilities:
 http://dev.mysql.com/downloads/workbench/
 
-$ ps xa | grep mysqld
-$ rake db:migrate RAILS_ENV=development
-$ rails s -p 3008
+MySQL deamon
+    
+        $ ps xa | grep mysqld
+        $ rake db:migrate RAILS_ENV=development
+        $ rails s -p 3008
